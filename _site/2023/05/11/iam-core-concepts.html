@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Iam Core Concepts | Rckwzrd’s Reference</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="Iam Core Concepts" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Identity Access Management is a policy tool used to control access to resources created in AWS. Resources include s3 buckets, lambdas, databases, containers, and other services. Human and application users need allow and deny permissions to perform actions on resources. Permissions are defined in an IAM policy document and attached to a user, group, or role. Notes below cover IAM basics." />
+<meta property="og:description" content="Identity Access Management is a policy tool used to control access to resources created in AWS. Resources include s3 buckets, lambdas, databases, containers, and other services. Human and application users need allow and deny permissions to perform actions on resources. Permissions are defined in an IAM policy document and attached to a user, group, or role. Notes below cover IAM basics." />
+<link rel="canonical" href="http://localhost:4000/2023/05/11/iam-core-concepts.html" />
+<meta property="og:url" content="http://localhost:4000/2023/05/11/iam-core-concepts.html" />
+<meta property="og:site_name" content="Rckwzrd’s Reference" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-05-11T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Iam Core Concepts" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-05-11T00:00:00-05:00","datePublished":"2023-05-11T00:00:00-05:00","description":"Identity Access Management is a policy tool used to control access to resources created in AWS. Resources include s3 buckets, lambdas, databases, containers, and other services. Human and application users need allow and deny permissions to perform actions on resources. Permissions are defined in an IAM policy document and attached to a user, group, or role. Notes below cover IAM basics.","headline":"Iam Core Concepts","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2023/05/11/iam-core-concepts.html"},"url":"http://localhost:4000/2023/05/11/iam-core-concepts.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Rckwzrd&apos;s Reference" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Rckwzrd&#39;s Reference</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Iam Core Concepts</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2023-05-11T00:00:00-05:00" itemprop="datePublished">May 11, 2023
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Identity Access Management is a policy tool used to control access to resources created in AWS. Resources include s3 buckets, lambdas, databases, containers, and other services. Human and application users need allow and deny permissions to perform actions on resources. Permissions are defined in an IAM policy document and attached to a user, group, or role. Notes below cover IAM basics.</p>
+
+<p><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html">AWS IAM documentation</a></p>
+
+<p><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html">AWS IAM policy simulator</a></p>
+
+<p><a href="https://youtu.be/_ZCTvmaPgao?si=vwc63x_fXAPhC_Pl">Short video on IAM basics</a></p>
+
+<p>Create lambda function example</p>
+<ul>
+  <li>user creates lambda with lambda::createFunction</li>
+  <li>access denied error if user does not have permission</li>
+  <li>craft a json policy document and attach to user
+    <ul>
+      <li>statement array with effect, action, and resource keys</li>
+    </ul>
+  </li>
+  <li>effect key: explicit and implicit allow/deny</li>
+  <li>resource can include everything or specific resources</li>
+  <li>actions on resource are resolved against policy documents attached to user</li>
+  <li>execute actions from console, CLI or SDK</li>
+</ul>
+
+<p>Access keys and secret access keys</p>
+<ul>
+  <li>secret codes used to interact with aws</li>
+  <li>use to configure aws cli and saml2aws</li>
+  <li>use to initiate boto3 client</li>
+  <li>keys are needed to affiliate policy documents with a user</li>
+</ul>
+
+<p>Policy document</p>
+<ul>
+  <li>dynamoDB read only access to specific columns</li>
+  <li>asterisk is a wild card</li>
+  <li>action key with array of common read only operations</li>
+  <li>resource key with table suffix</li>
+  <li>condition key with constraint operators and keys to limit scope</li>
+</ul>
+
+<p>Other concepts</p>
+<ul>
+  <li>groups for account and organization owners
+    <ul>
+      <li>bucket users into admin, developer, and testers</li>
+      <li>apply general or blanket policies</li>
+    </ul>
+  </li>
+  <li>roles vs users
+    <ul>
+      <li>roles are interchangeable with users</li>
+      <li>roles also have policy documents</li>
+      <li>roles can be assumed for a temporary time period</li>
+      <li>users and applications can have ability to assume a role</li>
+    </ul>
+  </li>
+  <li>trust relationships
+    <ul>
+      <li>use of roles for users to assume access to resources between accounts</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Pro tips</p>
+<ul>
+  <li>protect root at all costs</li>
+  <li>explicit effect deny beats effect allow
+    <ul>
+      <li>deny supersedes allow at all levels</li>
+    </ul>
+  </li>
+  <li>use least privilege model
+    <ul>
+      <li>specify least resource and action needed to do a thing</li>
+      <li>minimize wild cards</li>
+    </ul>
+  </li>
+  <li>use aws policy simulator
+    <ul>
+      <li>policy builder and tester</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Summary</p>
+<ul>
+  <li>create users who use credentials that grant access based on their policy document</li>
+  <li>create roles which can be assumed by entities within or across accounts with a trust relationship</li>
+</ul>
+
+<p>Make dynamoDB IAM policy</p>
+<ul>
+  <li>IAM console access management
+    <ul>
+      <li>groups, users, roles, and policies</li>
+    </ul>
+  </li>
+  <li>resource group add user</li>
+  <li>dynamoDB user with access key and ID</li>
+  <li>policy contains
+    <ul>
+      <li>service, action, resources, conditions</li>
+    </ul>
+  </li>
+  <li>associate policy with user
+    <ul>
+      <li>attach policy to add permissions</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+	</span><span class="nl">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span><span class="w">
+	</span><span class="nl">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+		</span><span class="p">{</span><span class="w">
+			</span><span class="nl">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DynamoReadWriteTransactionsTable"</span><span class="err">.</span><span class="w">
+			</span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+			</span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+				</span><span class="s2">"dynamodb:PutItem"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"dynamdb:GetItem"</span><span class="w">
+			</span><span class="p">],</span><span class="w">
+			</span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:dynamodb:us-east-1:398447858632:table/Transactions"</span><span class="w">
+		</span><span class="p">}</span><span class="w">
+	</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+
+  </div><a class="u-url" href="/2023/05/11/iam-core-concepts.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="simple-footer">
+    <!-- <p class="footer-color"> Matt Rhoads | <a href="mailto:mrhoads1@gmail.com">mrhoads1@gmail.com</a></p> -->
+    <p></p>
+</footer>
+</body>
+
+</html>

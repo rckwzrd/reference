@@ -1,0 +1,88 @@
+<p>The bash terminal is a central part of my workflow. It is time for some obligatory notes on what I would define as the <em>“core built in commands”</em>. These commands have been drawn from my shell history based on frequency and binned into the following categories:</p>
+
+<ul>
+  <li>Getting help</li>
+  <li>Interacting with directories</li>
+  <li>Intereacting with files</li>
+  <li>Finding and searching</li>
+  <li>Permissions and execution</li>
+  <li>System and processes</li>
+</ul>
+
+<h2 id="getting-help">Getting help</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>man     # manual help about a command
+apropos # search manual for help
+</code></pre></div></div>
+
+<h2 id="interacting-with-directories">Interacting with directories</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pwd      # print working directory
+ls:      # list files in current directory 
+ls -alF  # list files in long format
+cd       # change directory
+cd ..    # move up one directory
+pushd    # push directory
+popd     # pop directory
+mkdir    # make a directory
+mkdir -p # make a directory and parents
+rmdir    # remove an empty directory
+rmdir -p # remove empty directory and parents
+</code></pre></div></div>
+
+<h2 id="interacting-with-files">Interacting with files</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cp             # copy a file or directory
+rm             # remove a file
+rm -rf         # recursively remove files and directories
+mv             # move a file or directory
+less           # page through a file
+cat            # print whole file
+zip -r &lt;dir&gt;   # zip a directory of files
+unzip &lt;.zip&gt;   # unzip files into current directory
+gzip -kr &lt;dir&gt; # gzip a directory of files
+gunzip &lt;.gz&gt;   # unzip into current directory
+curl -O &lt;url&gt;  # download a file from URL and save as root
+</code></pre></div></div>
+<h2 id="finding-and-searching">Finding and searching</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>history                  # print terminal command history
+grep &lt;str&gt; &lt;files&gt;       # search files for text
+find &lt;dir&gt; -name &lt;file&gt;  # search directory for file
+</code></pre></div></div>
+
+<h2 id="environment-and-arguements">Environment and arguements</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>env    # look at environment variables
+export # set a new environment variable
+echo   # print arguements
+xargs  # execute arguements:
+</code></pre></div></div>
+
+<h2 id="permissions-and-execution">Permissions and execution</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo             # super user do
+source &lt;file&gt;    # execute commands from file in current shell 
+chmod 644 &lt;file&gt; # change file permissions to read only
+chmod 755 &lt;file&gt; # change file permissions to executable
+chomd u+x &lt;file&gt; # make file executable for user
+chomd a-x &lt;file&gt; # remove file executable for user
+</code></pre></div></div>
+
+<h2 id="system-and-processes">System and processes</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>exit           # exit shell
+df             # print free disk space
+du             # print directory disk usage
+top            # print system usage and processes
+ps aux         # list all running process with ID
+kill -9 &lt;id&gt;   # kill process with ID
+apt update     # download updates for all installed packages
+apt upgrade    # install updates for all installed packages
+apt list       # list available packages
+apt install    # install package
+apt remove     # uninstall package
+apt purge      # uninstall package and configuration
+apt autoremove # uninstall unused dependancies
+</code></pre></div></div>
+
